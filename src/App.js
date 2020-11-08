@@ -12,12 +12,31 @@ const images = [
 ];
 
 function App() {
-  const [selected, selectedSet] = React.useState([
-    "luna.png",
-    "gnorman.png",
-    "jimmy.png",
-  ]);
-  const [chosen, chosenSet] = React.useState(null);
+  const [spinner, spinnerSet] = React.useState({
+    rotation: 0,
+    selectedIndex: 0,
+    selected: null,
+    selectedImages: ["luna.png", "gnorman.png", "jimmy.png"],
+  });
+
+  React.useEffect(() => {
+    window.setInterval(() => {
+      spinnerSet((sp) => {
+        if (sp.rotation > 0) {
+          const out = {
+            ...sp,
+          };
+          out.rotation -= 1;
+          out.selectedIndex = out.selectedIndex + 1;
+          out.selected =
+            out.selectedImages[out.selectedIndex % out.selectedImages.length];
+          return out;
+        }
+        return sp;
+      });
+    }, 750);
+  }, []);
+
   return (
     <div
       style={{
@@ -41,18 +60,20 @@ function App() {
             <img
               src={img}
               style={{
-                opacity: selected.includes(img) ? 1 : 0.2,
+                opacity: spinner.selectedImages.includes(img) ? 1 : 0.2,
                 margin: "0.25em",
-                borderRadius: "0.25em",
-                backgroundColor: chosen === img ? "lightblue" : null,
-                padding: "0.25em",
+                borderRadius: "1em",
+                backgroundColor: spinner.selected === img ? "lightblue" : null,
+                padding: "0.75em",
               }}
               onClick={() => {
-                if (selected.includes(img)) {
-                  selectedSet(selected.filter((i) => i !== img));
-                } else {
-                  selectedSet([...selected, img]);
-                }
+                const selectedImages = spinner.selectedImages.includes(img)
+                  ? spinner.selectedImages.filter((i) => i !== img)
+                  : [...spinner.selectedImages, img];
+                spinnerSet({
+                  ...spinner,
+                  selectedImages,
+                });
               }}
             />
           </div>
@@ -69,7 +90,13 @@ function App() {
           marginTop: "0.5em",
         }}
         onClick={() => {
-          chosenSet(selected[Math.floor(Math.random() * selected.length)]);
+          spinnerSet({
+            ...spinner,
+            rotation: Math.floor(Math.random() * 20 + 5),
+            selectedIndex: Math.floor(
+              Math.random() * spinner.selectedImages.length
+            ),
+          });
         }}
       >
         Choose
