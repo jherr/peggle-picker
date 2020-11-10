@@ -92,7 +92,7 @@ function App() {
         onClick={() => {
           spinnerSet({
             ...spinner,
-            rotation: Math.floor(Math.random() * 20 + 5),
+            rotation: Math.floor(Math.random() * 5 + 5),
             selectedIndex: Math.floor(
               Math.random() * spinner.selectedImages.length
             ),
