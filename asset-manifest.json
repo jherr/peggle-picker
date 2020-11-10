@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/peggle-picker/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/peggle-picker/static/js/main.a5ffda59.chunk.js",
-    "main.js.map": "/peggle-picker/static/js/main.a5ffda59.chunk.js.map",
+    "main.js": "/peggle-picker/static/js/main.d5e5632a.chunk.js",
+    "main.js.map": "/peggle-picker/static/js/main.d5e5632a.chunk.js.map",
     "runtime-main.js": "/peggle-picker/static/js/runtime-main.108a7a40.js",
     "runtime-main.js.map": "/peggle-picker/static/js/runtime-main.108a7a40.js.map",
     "static/js/2.b7bac338.chunk.js": "/peggle-picker/static/js/2.b7bac338.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.108a7a40.js",
     "static/js/2.b7bac338.chunk.js",
     "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.a5ffda59.chunk.js"
+    "static/js/main.d5e5632a.chunk.js"
   ]
 }
